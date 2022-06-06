@@ -1,31 +1,20 @@
 from django.shortcuts import render
+from django.views import generic
+from .models import Post
 
-posts = [
-    {
-        'author': 'Corey',
-        'title': 'Blog post',
-        'content': 'first post',
-        'date_posted': '9. 5. 2021'
-    },
-    {
-        'author': 'Mike',
-        'title': 'Shit post',
-        'content': 'second post',
-        'date_posted': '25. 5. 2021'
-    },
-    {
-        'author': 'Ken',
-        'title': 'another post',
-        'content': 'another post',
-        'date_posted': '27. 2. 2021'
-    }
-]
+class PostList(generic.ListView):
+    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    template_name = 'blog/home.html'
+
+# class PostDetail(generic.DetailView):
+#     model = Post
+#     template_name = 'post_detail.html'
 
 def home(request):
-    context = {
-        'posts': posts
-    }
-    return render(request, 'blog/home.html',context)
+    # context = {
+    #     'posts': posts
+    # }
+    return render(request, 'blog/home.html')
 
 
 def about(request):

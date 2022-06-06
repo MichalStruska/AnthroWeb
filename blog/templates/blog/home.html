@@ -1,7 +1,7 @@
 {% extends "blog/base.html" %}
-{% load staticfiles %}
+{% load static %}
 {% block content %}
-    {% for post in posts %}
+    {% for post in post_list  %}
         <article class="media content-section">
             <div class="media-body">
             <div class="article-metadata">
