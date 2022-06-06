@@ -1,0 +1,29 @@
+body {
+    gap: 10px;
+    background: #d9dbbf;
+    color: #4f4d4d;
+    margin-top: 5rem;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #161091;
+  }
+  
+  title {
+    color: #25c2b5;
+  }
+  
+  a{
+    color: #25c2b5;
+  }
+   
+  p {
+    color: #25c2b5;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 100px 100px;
+    gap: 10px;
+  }
