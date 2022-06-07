@@ -36,18 +36,17 @@ body {
   .site-header{
     height: auto;
     width: auto;
-    padding: 5px 5px;
+    padding: 10px 10px;
     border: 10px solid #dddddd;
     border-radius: 10px;
     margin-bottom: 20px;
-    grid-column: 2/4;
+    grid-column: 1/4;
     grid-row: auto;
     background: #c8ed8c;
   }
   
   /*.container{
     padding: 10px 20px;
-    grid-row: 1;
     margin-right: 50px;
     margin-left: 50px;
   }*/
