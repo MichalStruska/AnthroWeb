@@ -1,7 +1,7 @@
 
 body {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 100px 100px 100px;
     gap: 10px;
     background: #d9dbbf;
@@ -34,13 +34,56 @@ body {
   }
   
   .site-header{
-    height: 120px;
-    width: 200px;
-    background: #bdc730;
-    padding: 10px 10px;
+    height: auto;
+    width: auto;
+    padding: 5px 5px;
     border: 10px solid #dddddd;
     border-radius: 10px;
     margin-bottom: 20px;
+    grid-column: 2/4;
+    grid-row: auto;
+    background: #c8ed8c;
+  }
+  
+  /*.container{
+    padding: 10px 20px;
+    grid-row: 1;
+    margin-right: 50px;
+    margin-left: 50px;
+  }*/
+  
+  .container02{
+    grid-row: 2;
+    grid-column: 2/4;
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+  
+  .navbar-nav{
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  
+  .navbar-toggler{
+    height: 150px;
+    width: 150px;
+  
+  }
+  
+  .sidenav{
+    grid-column: 1;
+    height: 500px;
+    width: 150px;
+    background: #6d79bf;
+  }
+
+  .navbar-nav {
+    color: #1fa11f;
+    text-align: right;
+  }
+   
+  .nav-item .nav-link {
+    color: #1fa11f;
   }
   
   /*.container {
