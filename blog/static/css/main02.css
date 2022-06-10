@@ -2,7 +2,7 @@
 body {
     display: grid;
     grid-template-columns: .5fr 1fr 1fr;
-    grid-template-rows: 100px 100px 100px;
+    grid-template-rows: 200px 100px 100px;
     gap: 10px;
     background: white;
     color: black;
@@ -11,28 +11,54 @@ body {
     margin-left: 5rem;
 }
   
-    h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
     color: #eb4034;
-    }
+}
+
   
-    .content-section {
+.content-section {
     background: #dddddd;
     padding: 10px 20px;
     border: 20px solid #d8d8d8;
     border-radius: 3px;
     margin-bottom: 20px;
-    }
+}
   
 .site-header{
-    height: auto;
-    width: auto;
-    padding: 10px 10px;
-    border: 10px solid #dddddd;
+    height: 100px;
+    padding: 5px 5px;
+    border: 10px solid #9d9b9b8b;
     border-radius: 10px;
     margin-bottom: 20px;
     grid-column: 1/4;
     grid-row: auto;
-    background: #d3d3d3;
+    background: #f8f8f8;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.logins{
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    grid-row: 1;
+    grid-column: 3;
+    justify-self: right;
+}
+
+.navbar-title{
+    font-size: 30px;
+    grid-row: 1;
+    grid-column: 1/2;
+}
+
+.button.login-button{
+    font-size: 10px;
+    padding: 10px 20px;
 }
   
 .container02{
@@ -42,15 +68,6 @@ body {
     margin-left: 50px;
 }
 
-.navbar-top {
-    background: #d3d3d3;
-}
-
-#site-title {
-    font-size: 50px;
-}
-
-
 .sidenav {
     grid-column: 1;
     display: grid;
@@ -58,43 +75,42 @@ body {
     grid-template-rows: 100px 100px 100px;
     height: 500px;
     width: 150px;
-    background: #c8ed8c;
+    border: 10px solid #9d9b9b8b;
+    background: #ffffff;
     justify-items: center;
     align-items: center;
     row-gap: .01fr;
 }
 
-.navbar-nav {
-    color: #1fa11f;
-    text-align: right;
-    margin-right: 20px;
-    margin-left: 20px;    
-}
-
-.nav-item .nav-link {
-    color: #ddf540;
-    text-align: center;
-    margin-right: 20px;
-    margin-left: 20px;
-    padding: 15px 32px;
-    font-size: 50px;
-}
-
 .button {
-    background-color: #34ebb1;
     border: none;
-    color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 20px;
+    cursor: pointer;
+    font-style: normal;
+    font-family: Arial;
+    
 }
 
-a.button {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
+.col-md-8 .button {
+    background-color: #eb9334;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
     text-decoration: none;
-    color: initial;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    
 }
+
+.sidenav .button{
+
+    color: white;
+    background-color: #1330d9; 
+}
+
