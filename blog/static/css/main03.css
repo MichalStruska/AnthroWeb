@@ -24,3 +24,31 @@
     color: rgb(255, 38, 103) !important;
     font-size: 20px;
 }
+
+.article-image
+{
+    max-width: 100%;
+    height: auto;
+    left: 0px;
+    right: 0px;
+}
+
+img
+{
+    width: 20px;
+    height: 20px;
+}
+
+.news-image
+{
+    width: 100px;
+    height: 100px;
+    background-size:100% 100%;
+}
+
+.article-image
+{
+    width: 900px;
+    height: auto;
+    background-size:100% 100%;
+}
