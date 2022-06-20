@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.views import generic
 from .models import Post
+from .forms import PostForm, EditForm
 
 class PostList(generic.ListView):
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    model = Post
+    #queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'blog/home.html'
 
 class PostDetail(generic.DetailView):
@@ -12,10 +14,16 @@ class PostDetail(generic.DetailView):
 
 class AddPostView(generic.CreateView):
     model = Post
+    form_class = PostForm
     template_name = 'blog/add_post.html'
-    fields = '__all__'
+    #fields = '__all__'
     #fields = ["title","content"]
 
+class UpdatePostView(generic.UpdateView):
+    model = Post
+    form_class = EditForm
+    template_name = 'blog/update_post.html'
+    #fields = ['title', 'content']
 
 
 def home(request):
