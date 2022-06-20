@@ -10,6 +10,14 @@ class PostDetail(generic.DetailView):
     model = Post
     template_name = 'blog/article_detail.html'
 
+class AddPostView(generic.CreateView):
+    model = Post
+    template_name = 'blog/add_post.html'
+    fields = '__all__'
+    #fields = ["title","content"]
+
+
+
 def home(request):
     # context = {
     #     'posts': posts

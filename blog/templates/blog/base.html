@@ -29,6 +29,7 @@
             </div>
 
             <a class="nav-link align-items-right" href="/admin">Admin <span class="sr-only">(current)</span></a>
+            <a class="nav-link align-items-right" href="{% url 'add-post' %}">Add post <span class="sr-only">(current)</span></a>
         </nav>
 
     </header>
@@ -78,7 +79,8 @@
                     </div>
                 </div>
                 <div class="col py-3">
-                    {% block content %}{% endblock %}
+                    {% block content %}
+                    {% endblock %}
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@
                 <small class="text-muted">{{ post.date_posted }}</small>
             </div>
             <a class="mr-2" href="#">{{ post.author }}</a>
-            <p class="article-content">{{ post.content|truncatewords:20 }}</p>
+            <p class="article-content">{{ post.content|truncatewords:20|safe|linebreaksbr }}</p>
         </div>
     </article>
         

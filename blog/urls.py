@@ -6,4 +6,5 @@ urlpatterns = [
     path('article/<int:pk>', views.PostDetail.as_view(), name='article-detail'),
     path('about/', views.about, name='blog-about'),
     path('news/', views.news, name='blog-news'),
+    path('add-post/', views.AddPostView.as_view(),name='add-post'),
 ]
