@@ -7,7 +7,8 @@
         <link rel="stylesheet" href="{% static "css/main03.css" %}" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Department of Anthropology and Human Genetics</title>
+        {% block title %}{% endblock %}
+        
     </head>
 
     <header class="site-header">
@@ -30,6 +31,8 @@
 
             <a class="nav-link align-items-right" href="/admin">Admin <span class="sr-only">(current)</span></a>
             <a class="nav-link align-items-right" href="{% url 'add-post' %}">Add post <span class="sr-only">(current)</span></a>
+            <a class="nav-link align-items-right" href="{% url 'register' %}">Register <span class="sr-only">(current)</span></a>
+            <a class="nav-link align-items-right" href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a>
         </nav>
 
     </header>
