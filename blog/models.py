@@ -19,8 +19,9 @@ class Post(models.Model):
     #content = models.TextField()
     content = RichTextField(blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.IntegerField(choices=STATUS, default=1)
     article_image = models.ImageField(null = True, blank = True, upload_to = "images/")
+    category = models.CharField(max_length=255, default="News")
 
     class Meta:
         ordering = ['-created_on']
@@ -29,7 +30,13 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        #return reverse('article-detail', args=[str(self.id)])
         return reverse('blog-home')
     
+class Category(models.Model):
+    name = models.CharField(max_length=200, unique=True)
 
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('blog-home')

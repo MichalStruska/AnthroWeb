@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Post
+from .models import Post, Category
 from .forms import PostForm, EditForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
@@ -22,6 +22,11 @@ class AddPostView(generic.CreateView):
     #fields = '__all__'
     #fields = ["title","content"]
 
+class AddCategoryView(generic.CreateView):
+    model = Category
+    template_name = 'blog/add_category.html'
+    fields = '__all__'
+
 class UpdatePostView(generic.UpdateView):
     model = Post
     form_class = EditForm
@@ -31,6 +36,10 @@ class UpdatePostView(generic.UpdateView):
 class DeletePostView(generic.DeleteView):
     model = Post
     template_name: str = 'blog/delete_post.html'
+
+def CategoryView(request, cats):
+    category_posts = Post.objects.filter(category=cats, status=1)
+    return render(request, 'blog/categories.html', {'cats':cats.title(), 'category_posts':category_posts})
 
 def home(request):
     # context = {

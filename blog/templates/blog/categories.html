@@ -1,0 +1,28 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}<title>Categories</title>{% endblock %}
+{% block content %}
+    {% if category_posts %}
+        <h1>{{ cats }}</h1>
+        {% for post in category_posts %}
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <h2><a class="article-title" href="{% url 'article-detail' post.pk %}">{{ post.title }}</a></h2>
+                        <small class="text-muted">{{ post.date_posted }}</small>
+                    </div>
+                    <a class="mr-2" href="#">{{ post.author }}</a>
+                    <small class="mr-2">{{ post.created_on|date:'d M Y' }}</small>
+                    {% if user.is_authenticated %}
+                        <small><a href='{% url 'update-post' post.pk %}'>Edit</a></small>
+                        <small><a href="delete/{{ post.id }}"'>Delete</a></small>
+                    {% endif %}
+                
+                    <p class="article-content">{{ post.content|truncatewords:20|safe|linebreaksbr }}</p>
+                </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        sorry, not exist
+    {% endif %}
+{% endblock content %}

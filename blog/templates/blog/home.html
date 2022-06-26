@@ -9,6 +9,7 @@
                 <h2><a class="article-title" href="{% url 'article-detail' post.pk %}">{{ post.title }}</a></h2>
                 <small class="text-muted">{{ post.date_posted }}</small>
             </div>
+            <a class="mr-2" href="{% url 'category' post.category %}">{{ post.category }}</a></br>
             <a class="mr-2" href="#">{{ post.author }}</a>
             <small class="mr-2">{{ post.created_on|date:'d M Y' }}</small>
             {% if user.is_authenticated %}
