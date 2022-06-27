@@ -2,7 +2,7 @@
 {
     font-family: 'Lato', sans-serif;
     color:rgb(156, 0, 0) !important;
-    font-size: 25px;
+    font-size: 100px;
     margin: 0px;
     margin-right:50px;
 }
@@ -11,12 +11,12 @@
 {
     width: 60px;
     height: 60px;
-    margin-right:50px;
+    margin-right:20px;
 }
 
 #navbarID
 {
-    background-color: #9df8b4 !important;
+    background-color: #736000 !important;
 }
 
 .sidenav-button

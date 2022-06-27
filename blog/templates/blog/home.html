@@ -9,7 +9,7 @@
                 <h2><a class="article-title" href="{% url 'article-detail' post.pk %}">{{ post.title }}</a></h2>
                 <small class="text-muted">{{ post.date_posted }}</small>
             </div>
-            <a class="mr-2" href="{% url 'category' post.category %}">{{ post.category }}</a></br>
+            <a class="mr-2" href="{% url 'category' post.category|slugify %}">{{ post.category }}</a></br>
             <a class="mr-2" href="#">{{ post.author }}</a>
             <small class="mr-2">{{ post.created_on|date:'d M Y' }}</small>
             {% if user.is_authenticated %}
@@ -23,6 +23,7 @@
         
     {% endfor %}
     <!--<link rel="stylesheet" href="{% static "css/main02.css" %}" />-->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "css/main03.css" %}" />
     
 {% endblock content %}

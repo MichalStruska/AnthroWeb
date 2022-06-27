@@ -38,8 +38,8 @@ class DeletePostView(generic.DeleteView):
     template_name: str = 'blog/delete_post.html'
 
 def CategoryView(request, cats):
-    category_posts = Post.objects.filter(category=cats, status=1)
-    return render(request, 'blog/categories.html', {'cats':cats.title(), 'category_posts':category_posts})
+    category_posts = Post.objects.filter(category=cats.replace('-',' '), status=1)
+    return render(request, 'blog/categories.html', {'cats':cats.replace('-',' ').title(), 'category_posts':category_posts})
 
 def home(request):
     # context = {
