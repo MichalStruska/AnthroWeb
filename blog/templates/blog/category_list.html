@@ -1,0 +1,7 @@
+{% block title %}<title>Blog categories</title>{% endblock %}
+{% block content %}
+    <h1><a>Post categories</a></h1>
+    {% for item in cat_menu_list %}
+        <h4><a class="dropdown-item" href="{% url 'category' item|slugify|title %}">{{ item }}</a></h4>
+    {% endfor %}
+{% endblock content %}

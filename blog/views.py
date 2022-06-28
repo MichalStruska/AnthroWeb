@@ -1,3 +1,4 @@
+from msilib.schema import ListView
 from django.shortcuts import render
 from django.views import generic
 from .models import Post, Category
@@ -6,10 +7,18 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
 
+
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'blog/home.html'
+
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        
+        context = super(PostList, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
 
 class PostDetail(generic.DetailView):
     model = Post
@@ -37,15 +46,19 @@ class DeletePostView(generic.DeleteView):
     model = Post
     template_name: str = 'blog/delete_post.html'
 
-def CategoryView(request, cats):
-    category_posts = Post.objects.filter(category=cats.replace('-',' '), status=1)
-    return render(request, 'blog/categories.html', {'cats':cats.replace('-',' ').title(), 'category_posts':category_posts})
+def CategoryListView(request):
+    cat_menu_list = Category.objects.all()
+    return render(request, 'blog/category_list.html', {'cat_menu_list':cat_menu_list})
 
-def home(request):
-    # context = {
-    #     'posts': posts
-    # }
-    return render(request, 'blog/home.html')
+def CategoryView(request, cats):
+    category_posts = Post.objects.filter(category=cats, status=1)
+    return render(request, 'blog/categories.html', {'cats':cats, 'category_posts':category_posts})
+
+# def home(request):
+#     # context = {
+#     #     'posts': posts
+#     # }
+#     return render(request, 'blog/home.html')
 
 
 def about(request):
