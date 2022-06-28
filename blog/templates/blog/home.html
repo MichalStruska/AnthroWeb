@@ -1,33 +1,40 @@
 {% extends "blog/base.html" %}
-{% load staticfiles %}
+{% load static %}
 {% block title %}<title>Department of Anthropology and Human Genetics</title>{% endblock %}
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/main03.css' %}">
 </head>
-{% block content %}
-    {% for post in post_list  %}
-    <article class="media content-section">
-        <div class="media-body">
-            <div class="article-metadata">
-                <h2><a class="article-title" id="article-title" href="{% url 'article-detail' post.pk %}">{{ post.title }}</a></h2>
-                <small class="text-muted">{{ post.date_posted }}</small>
+<div class="container">
+    {% block content %}
+        {% for post in post_list  %}
+            <div class="row">
+                <article class="media content-section">
+                    <div class="col-md-auto align-middle">
+                        {% if post.thumbnail_image %}
+                            <img src={{post.thumbnail_image.url}} class="img-thumbnail" alt="Article thumbnail">
+                        {% else %}
+                            <img src="{% static 'images/Logo_transparent.png' %}" class="img-thumbnail" alt="Article thumbnail">
+                        {% endif %}
+                    </div>
+                    <div class="media-body col-8">
+                        <div class="article-metadata">
+                            <h2><a class="article-title" id="article-title" href="{% url 'article-detail' post.pk %}">{{ post.title }}</a></h2>
+                            <small class="text-muted">{{ post.date_posted }}</small>
+                            <a class="mr-2" href="{% url 'category' post.category|slugify %}">{{ post.category }}</a></br>
+                            <a class="mr-2" href="#">{{ post.author }}</a>
+                            <small class="mr-2">{{ post.created_on|date:'d M Y' }}</small>
+                            {% if user.is_authenticated %}
+                                <small><a href="{% url 'update-post' post.pk %}">Edit</a></small>
+                                <small><a href="delete/{{ post.id }}">Delete</a></small>
+                            {% endif %}
+                        
+                            <p class="article-content">{{ post.content|truncatewords:20|safe|linebreaksbr }}</p>
+                        </div>
+                        
+                    </div>
+                </article>
             </div>
-            <a class="mr-2" href="{% url 'category' post.category|slugify %}">{{ post.category }}</a></br>
-            <a class="mr-2" href="#">{{ post.author }}</a>
-            <small class="mr-2">{{ post.created_on|date:'d M Y' }}</small>
-            {% if user.is_authenticated %}
-                <small><a href='{% url 'update-post' post.pk %}'>Edit</a></small>
-                <small><a href="delete/{{ post.id }}"'>Delete</a></small>
-            {% endif %}
-           
-            <p class="article-content">{{ post.content|truncatewords:20|safe|linebreaksbr }}</p>
-        </div>
-    </article>
-        
-    {% endfor %}
-    
-    
-    
-    
-{% endblock content %}
+        {% endfor %}
+    {% endblock content %}
+</div>
