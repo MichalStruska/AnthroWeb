@@ -1,8 +1,14 @@
+#article-title
+{
+    font-size: 20px;
+    color:rgb(104, 104, 104);
+}
+
 .navbar-brand
 {
     font-family: 'Lato', sans-serif;
-    color:rgb(156, 0, 0) !important;
-    font-size: 100px;
+    color:rgb(59, 59, 59) !important;
+    font-size: 20px;
     margin: 0px;
     margin-right:50px;
 }
@@ -12,43 +18,4 @@
     width: 60px;
     height: 60px;
     margin-right:20px;
-}
-
-#navbarID
-{
-    background-color: #736000 !important;
-}
-
-.sidenav-button
-{
-    color: rgb(255, 38, 103) !important;
-    font-size: 20px;
-}
-
-.article-image
-{
-    max-width: 100%;
-    height: auto;
-    left: 0px;
-    right: 0px;
-}
-
-img
-{
-    width: 20px;
-    height: 20px;
-}
-
-.news-image
-{
-    width: 100px;
-    height: 100px;
-    background-size:100% 100%;
-}
-
-.article-image
-{
-    width: 900px;
-    height: auto;
-    background-size:100% 100%;
 }
