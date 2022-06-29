@@ -11,7 +11,7 @@ STATUS = (
 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    #slug = models.SlugField(max_length=200, unique=True)
     #title_tag = models.CharField(max_length=255, default="Dept")
     #slug = AutoSlugField(populate_from=['title'])
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
@@ -35,7 +35,7 @@ class Post(models.Model):
     
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    slug = AutoSlugField(populate_from=['name'])
+    #slug = AutoSlugField(populate_from=['name'])
 
     def __str__(self):
         return self.name
