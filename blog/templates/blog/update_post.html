@@ -6,15 +6,19 @@
     
 {% block content %}
     {% if user.is_authenticated %}
-        <h1>Edit post</h1>
-        <br/><br/>
-        <div class='form-group'>
-            <form method="POST">
-                {% csrf_token %}
-                {{form.media}}
-                {{form.as_p}}
-                <button class="btn btn-secondary">Update</button>
-        </div>
+        {% if user.id == post.author.id %}
+            <h1>Edit post</h1>
+            <br/><br/>
+            <div class='form-group'>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{form.media}}
+                    {{form.as_p}}
+                    <button class="btn btn-secondary">Update</button>
+            </div>
+        {% else %}
+            You are not the author of this post
+        {% endif %}
     {% else %}
         forbidden
     {% endif %}

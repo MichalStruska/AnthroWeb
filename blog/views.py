@@ -68,14 +68,16 @@ def news(request):
     return render(request, 'blog/news.html',{'title': 'news'})
 
 def delete_post(request, id):
+    
     post = Post.objects.filter(id=id)
     address.delete()
     return redirect('/home')
 
 def delete(request, id):
-  member = Post.objects.get(id=id)
-  member.delete()
-  return HttpResponseRedirect(reverse('blog-home'))
+  #if request.user.id == request.post.author.id:
+    member = Post.objects.get(id=id)
+    member.delete()
+    return HttpResponseRedirect(reverse('blog-home'))
 
 # def delete_post(request,post_id=None):
 #     post_to_delete=Post.objects.get(id=post_id)
