@@ -1,9 +1,6 @@
 {% extends "blog/base.html" %}
 {% load static %}
-
-<head>
-    <title>Add post</title>
-</head>
+{% block title %}<title>Add post</title>{% endblock %}
 
 {% block content %}
     {% if user.is_authenticated %}
