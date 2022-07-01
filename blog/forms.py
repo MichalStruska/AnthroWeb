@@ -1,6 +1,7 @@
 from django import forms
 from .models import Post, Category
 from django_extensions.db.fields import AutoSlugField
+from django.template.defaultfilters import slugify
 
 choices = Category.objects.all().values_list('name','name')
 
@@ -16,7 +17,7 @@ class PostForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'give a title'}),
-            # 'slug': forms.TextInput(attrs={'class':'form-control'}),
+            'slug': forms.TextInput(attrs={'class':'form-control'}),
             # 'slug': AutoSlugField(populate_from=['title']),
             # 'author': forms.Select(attrs={'class':'form-control'}),
             'author': forms.TextInput(attrs={'class':'form-control', 'value':'', 'id':'elder','type':'hidden'}),
@@ -24,6 +25,10 @@ class PostForm(forms.ModelForm):
             'content': forms.Textarea(attrs={'class':'form-control'}),
             
         }
+
+        def save(self, *args, **kwargs):
+            self.slug = slugify(self.title)
+            super(Post, self).save(*args, **kwargs)
 
 
 class EditForm(forms.ModelForm):
