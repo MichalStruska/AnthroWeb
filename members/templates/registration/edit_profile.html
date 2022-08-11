@@ -1,9 +1,12 @@
 {% extends "blog/base.html" %}
 {% load static %}
-{% block title %}<title>Edit profile</title>{% endblock %}
+{% block title %}<title>Edit settings</title>{% endblock %}
 {% block content %}
-<h1>Register</h1>
+<h1>Edit settings</h1>
 <br/><br/>
+{{ user.profile.bio }}
+
+<img src="{{ user.profile.profile_image.url }}" class="img-small">
 <div class='form-group'>
     <form method="POST">
         {% csrf_token %}

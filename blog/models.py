@@ -38,6 +38,20 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blog-home')
     
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    profile_image = models.ImageField(null = True, blank = True, upload_to = "images/profile/")
+    bio = models.TextField(max_length=500, blank=True)
+    facebook_link = models.CharField(max_length=255, null=True, blank=True)
+    twitter_link = models.CharField(max_length=255, null=True, blank=True)
+    instagram_link = models.CharField(max_length=255, null=True, blank=True)
+    website_link = models.CharField(max_length=255, null=True, blank=True)
+    location = models.CharField(max_length=30, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username
+
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
     #slug = AutoSlugField(populate_from=['name'])

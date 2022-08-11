@@ -12,7 +12,7 @@
     {% endif %}
     {{ post.content|safe|linebreaksbr }}
     {% if post.article_image %}
-        <img src="{{post.article_image.url}}" class="article-image">
+        <img src="{{post.article_image.url}}" class="article-image w-25">
     {% endif %}
 
     <br></br>
@@ -31,7 +31,53 @@
             <small>Must be logged in to like</small>
         {% endif %}
         {{ total_likes }} likes
-        
     </form>
+
+<br/><br/>
+
+{% if post.author.profile %}
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            {% if post.author.profile.profile_image %}
+                <img src="{{ post.author.profile.profile_image.url }}" class="img-small rounded-circle">
+            {% else %}
+                <img src="{% static 'Blog/images/placeholder.png' %}" class="img-small rounded-circle">
+            {% endif %}
+
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.author }}</h5>
+
+                <p class="small-text-muted">
+
+                    {% if post.author.profile.twitter_link %}
+                        <a href="{{ post.author.profile.twitter_link }}">Twitter</a>
+                    {% endif %}
+
+                    {% if post.author.profile.facebook_link %}
+                        | <a href="{{ post.author.profile.facebook_link }}">Facebook</a>
+                    {% endif %}
+
+                    {% if post.author.profile.website_link %}
+                        | <a href="{{ post.author.profile.website_link }}">Web</a>
+                    {% endif %}
+                    
+                    | <a href="{% url 'show_profile_page' post.author.profile.id %}">Profile</a>
+
+                </p>
+                
+                {% if post.author.profile.bio %}
+                    <p class="card-text">{{ post.author.profile.bio }}</p>
+                {% endif %}
+                
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
     
 {% endblock content %}

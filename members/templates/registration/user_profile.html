@@ -1,0 +1,49 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}<title>User profile</title>{% endblock %}
+
+{% block content %}
+    <h1>User profile</h1>
+    <br/>
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                {% if page_user.profile_image %}
+                    <img src="{{ page_user.profile_image.url }}" class="img-small rounded-circle">
+                {% else %}
+                    <img src="{% static 'Blog/images/placeholder.png' %}" class="img-small rounded-circle">
+                {% endif %}
+    
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ page_user.user.first_name }} {{ page_user.user.last_name }} </h5>
+    
+                    <p class="small-text-muted">
+    
+                        {% if page_user.twitter_link %}
+                            <a href="{{ page_user.twitter_link }}">Twitter</a>
+                        {% endif %}
+    
+                        {% if page_user.facebook_link %}
+                            | <a href="{{ page_user.facebook_link }}">Facebook</a>
+                        {% endif %}
+    
+                        {% if page_user.website_link %}
+                            | <a href="{{ page_user.website_link }}">Web</a>
+                        {% endif %}
+                            
+                    </p>
+                    
+                    {% if page_user.bio %}
+                        <p class="card-text">{{ page_user.bio }}</p>
+                    {% endif %}
+                    
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
