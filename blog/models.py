@@ -49,6 +49,9 @@ class Profile(models.Model):
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
 
+    def get_absolute_url(self):
+        return reverse('blog-home')
+
     def __str__(self):
         return self.user.username
 

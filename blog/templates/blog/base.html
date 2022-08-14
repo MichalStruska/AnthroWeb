@@ -16,6 +16,29 @@
     </head>
 
     <header class="site-header">
+        <nav class="navbar-expand navbar sticky-top navbar-custom py-0">
+            <ul class="navbar-nav ml-auto" >
+                {% if user.is_authenticated %}
+                    <a class="small-link" id="pokus" href="{% url 'add-post' %}">Add post &emsp;<span class="sr-only">(current)</span></a>
+                    <a class="small-link" href="{% url 'add-category' %}">Add category &emsp;<span class="sr-only">(current)</span></a>
+                    {% if user.profile.id %}
+                        <a class="small-link" href="{% url 'edit_profile_page' user.profile.id %}">Edit profile page &emsp;</a>
+                        <a class="small-link" href="{% url 'show_profile_page' user.profile.id %}">Show profile page &emsp;</a>
+                    {% else %}
+                        <a class="small-link" href="{% url 'create_profile_page' %}">Create profile page &emsp;</a>
+                    {% endif %}
+                        <a class="small-link" href="{% url 'edit_profile' %}">Edit settings &emsp;</a>
+                        <a class="small-link" href="{% url 'logout' %}">Logout &emsp;</a>
+
+                    <!-- <a class="nav-link align-items-right" href="/admin">Admin <span class="sr-only">(current)</span></a> -->
+                {% else %}
+                    <a class="small-link" href="{% url 'register' %}">Register &emsp;</a>
+                    <a class="small-link" href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </ul>
+        </nav>
+
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-left" id="navbarID">
             <a class="navbar-brand" href="{% url 'blog-home' %}">
                 <img src="{% static "images/Logo_transparent.png" %}" width="30" height="30" alt="Department logo">
@@ -32,12 +55,12 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>      
             </div> -->
-
+<!-- 
             {% if cat_menu %}
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Categories
-                    </button>
+                    </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     
                         {% for item in cat_menu %}
@@ -49,32 +72,8 @@
 
             {% else %}
                 <a class="nav-link align-items-left" id="pokus" href="{% url 'category-list' %}">Categories <span class="sr-only">(current)</span></a>
-            {% endif %}
+            {% endif %} -->
 
-            {% if user.is_authenticated %}
-                <a class="nav-link align-items-left" id="pokus" href="{% url 'add-post' %}">Add post <span class="sr-only">(current)</span></a>
-                <a class="nav-link align-items-left" href="{% url 'add-category' %}">Add category <span class="sr-only">(current)</span></a>
-                
-                {% if user.profile %}
-                <div class="dropdown">
-                    <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Profile
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit settings</a>
-                        <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Edit profile page</a>
-                        <a class="dropdown-item" href="{% url 'show_profile_page' user.profile.id %}">Show profile page</a>
-                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                    </div>
-                </div>
-                {% endif %}
-
-                <!-- <a class="nav-link align-items-right" href="/admin">Admin <span class="sr-only">(current)</span></a> -->
-            {% else %}
-                <a class="nav-link align-items-left" href="{% url 'register' %}">Register <span class="sr-only">(current)</span></a>
-                <a class="nav-link align-items-rileftht" href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a>
-            {% endif %}
-            
         </nav>
 
     </header>
